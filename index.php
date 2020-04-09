@@ -1,4 +1,7 @@
+<?php session_start(); ?>
+
 <?php require_once 'protected/config.php'; ?>
+<?php require_once PROTECTED_DIR.'userManager.php'; ?>
 
 
 
@@ -6,11 +9,12 @@
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>ketamin</title>
     <link rel="stylesheet" type="text/css" href = "<?=PUBLIC_DIR.'style.css'; ?>">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-    <div id = "page">
+    <div class = "container">
         <header><?php include_once PROTECTED_DIR.'header.php' ?></header>
         <nav><?php require_once PROTECTED_DIR.'nav.php' ?></nav>
         <content><?php require_once PROTECTED_DIR.'routing.php' ?></content>

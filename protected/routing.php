@@ -27,7 +27,17 @@ switch ($_GET['P']) {
         }
         header('Location: index.php');
     break;
-        
+
+    case 'product':
+        if (!array_key_exists('ID', $_GET) || empty($_GET['ID'])) {
+            header('Location: index.php');
+        } 
+        require_once PROTECTED_DIR.'normal/product/product.php';
+    break;
+
+    case 'forgottenPassword':
+        require_once USER_DIR.'forgottenPsw.php';
+    break;
 
 }
 

@@ -16,9 +16,6 @@ function UserLogin($email, $password) {
 		':password' => sha1($password)
     ]; 
     
-    echo $email;
-    echo sha1($password);
-
 	require_once DATABASE_CONTROLLER;
 	$record = getRecord($query, $params);
 	if(!empty($record)) {
@@ -26,7 +23,7 @@ function UserLogin($email, $password) {
 		$_SESSION['first_name'] = $record['first_name'];
 		$_SESSION['last_name'] = $record['last_name'];
 		$_SESSION['email'] = $record['email'];
-		//$_SESSION['permission'] = $record['permission'];
+		$_SESSION['permission'] = $record['permission'];
 		header('Location: index.php');
 	}
 	return false;

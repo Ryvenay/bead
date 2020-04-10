@@ -17,16 +17,29 @@
     }
 ?>
 
-
+<h2>Bejelentkezés</h2>
 <form method="post">
-  <div class="form-group">
-    <label for="loginEmail">Email cím</label>
-    <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" name="email" value="<?= isset($postData) ? $postData['email'] : '';?>">
-    <small id="emailHelp" class="form-text text-muted"></small>
+  <div class="form-row justify-content-md-center">
+    <div class="form-group col-md-4">
+      <label for="loginEmail">Email cím</label>
+      <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" name="email" value="<?= isset($postData) ? $postData['email'] : '';?>" required>
+      <small id="emailHelp" class="form-text text-muted"></small>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="loginPassword">Jelszó</label>
-    <input type="password" class="form-control" id="loginPassword" name="password" value="">
+  <div class="form-row justify-content-md-center">
+    <div class="form-group col-md-4">
+      <label for="loginPassword">Jelszó</label>
+      <input type="password" class="form-control" id="loginPassword" name="password" value="" required>
+    </div>
   </div>
-  <button type="submit" class="btn btn-primary" name="login">Login</button>
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+      <button type="submit" class="btn btn-primary" name="login">Login</button>
+    </div>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+      <a href="<?='index.php?P=forgottenPassword' ?>" >Elfelejtett jelszó</a>
+    </div>
+  </div>
 </form>

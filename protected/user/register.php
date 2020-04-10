@@ -31,8 +31,9 @@
     }
 ?>
 
+<h2>Regisztráció</h2>
 <form method="post">
-	<div class="form-row">
+	<div class="form-row ">
 		<div class="form-group col-md-6">
 			<label for="registerFirstName">Keresztnév</label>
 			<input type="text" class="form-control" id="registerFirstName" name="first_name" value="<?=isset($postData) ? $postData['first_name'] : "";?>" required>

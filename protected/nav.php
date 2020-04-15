@@ -1,11 +1,26 @@
 <hr>
+<div class ="row justify-content-md-center">
+    <div class = "col align-self-start">
+        <div class ="menuitem"><a href="index.php">Főoldal</a></div>
+    </div>
 
-<a href="index.php">Főoldal</a>
+    <div class = "align-self-center">
+        <div class = "menuitem"><a href = "">Gitárok</a></div>
+        <div class = "menuitem"><a href = "">Effektek</a></div>
+        <div class = "menuitem"><a href = "">Erősítők</a></div>
+        <div class = "menuitem"><a href = "">Kiegészítők</a></div>
+        
+    </div>
 
-<?php if(!IsUserLoggedIn()) : ?>
-    <a href=<?='index.php?P=login' ?> >Belépés</a>
-    <a href=<?='index.php?P=register' ?> >Regisztráció</a>
-<?php else: ?>
-    <a href=<?='index.php?P=logout' ?> >Kijelentkezés</a>
+    <div class="col align-self-end text-right" id = "usermenu">
+        <?php if(!IsUserLoggedIn()) : ?>
+            <div class ="menuitem"><a href=<?='index.php?P=login' ?> >Belépés</a></div>
+            <div class ="menuitem"><a href=<?='index.php?P=register' ?> >Regisztráció</a></div>
+        <?php else: ?>
+            <div class ="menuitem"><a href=<?='index.php?P=logout' ?> >Kijelentkezés</a></div>
+            <div class ="menuitem"><a href=<?='index.php?P=cart' ?> >Kosár</a></div>
 
-<?php endif; ?>
+        <?php endif; ?>
+    </div>
+</div>
+<hr>

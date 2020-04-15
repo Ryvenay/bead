@@ -39,6 +39,9 @@ switch ($_GET['P']) {
         require_once USER_DIR.'forgottenPsw.php';
     break;
 
+    case 'cart':
+        require_once USER_DIR.'cart.php';
+
 }
 
 ?>

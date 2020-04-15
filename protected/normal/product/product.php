@@ -6,6 +6,27 @@
     $product = getProduct($_GET['ID']);
 
 ?>
+<?php
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['toCart'])) {
+    $postData = [
+        'quantity' => $_POST['quantity'],
+        'product_id' => $_POST['product_id']
+    ];
+
+    if($postData['quantity'] < 1) {
+        echo "<p id='alert'>Mennyiség nem megfelelő</p>";
+    }
+    else if(!tocart($postData['product_id'], $postData['quantity'])) {
+        echo "<p id='alert'>Nincs elegendő a raktáron</p>";
+    }
+    else {
+        echo "<p id=addedToCart>Hozzáadva a kosárhoz</p>";
+    }
+}
+
+?>
+
+
 <?php if ($product == false) : ?>
     <?php    require_once PRODUCT_DIR.'notfound.php'; ?>
 <?php else: ?>
@@ -22,20 +43,21 @@
                     <div class="form-row justify-content-md-center">
                         <div class="form-group col-md-2">
                            <input type ="number" class="form-control" id="productQuantity" name="quantity" value="1" required>
+                           <input type ="hidden" class="form-control" id="productId" name="product_id" value=<?=$product['id']; ?>>
                         </div>
                         <div class="col-md-auto">
-                            <button type="submit" class="btn btn-primary" name="addCart">Add to cart</button>
+                            <button type="submit" class="btn btn-primary" name="toCart">Hozzáadás a kosárhoz</button>
                         </div>
                     </div>
                     <div class="row justify-content-md-center">
-                        <?='A raktáron: '.$product['in_stock'].' db'; ?>
+                        <?='Raktáron: '.$product['in_stock'].' db'; ?>
                     </div>
                 </form>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <h3>Leírás</h3>
+                <h3 class="text-center">Leírás</h3>
                 <p class="description"><?=$product['description']; ?></p>
             </div>
         </div>

@@ -5,10 +5,10 @@
     </div>
 
     <div class = "align-self-center">
-        <div class = "menuitem"><a href = "">Gitárok</a></div>
-        <div class = "menuitem"><a href = "">Effektek</a></div>
-        <div class = "menuitem"><a href = "">Erősítők</a></div>
-        <div class = "menuitem"><a href = "">Kiegészítők</a></div>
+        <div class = "menuitem"><a href = "index.php?P=listProducts&category=Gitár">Gitárok</a></div>
+        <div class = "menuitem"><a href = "index.php?P=listProducts&category=Effekt">Effektek</a></div>
+        <div class = "menuitem"><a href = "index.php?P=listProducts&category=Erősítő">Erősítők</a></div>
+        <div class = "menuitem"><a href = "index.php?P=listProducts&category=Kiegészítő">Kiegészítők</a></div>
         
     </div>
 
@@ -17,9 +17,9 @@
             <div class ="menuitem"><a href=<?='index.php?P=login' ?> >Belépés</a></div>
             <div class ="menuitem"><a href=<?='index.php?P=register' ?> >Regisztráció</a></div>
         <?php else: ?>
-            <div class ="menuitem"><a href=<?='index.php?P=logout' ?> >Kijelentkezés</a></div>
             <div class ="menuitem"><a href=<?='index.php?P=cart' ?> >Kosár</a></div>
-
+            <div class ="menuitem"><a href=<?='index.php?P=profile' ?> >Profil</a></div>
+            <div class ="menuitem"><a href=<?='index.php?P=logout' ?> >Kijelentkezés</a></div>
         <?php endif; ?>
     </div>
 </div>

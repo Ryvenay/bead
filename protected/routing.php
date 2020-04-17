@@ -41,7 +41,29 @@ switch ($_GET['P']) {
 
     case 'cart':
         require_once USER_DIR.'cart.php';
+    break;
 
+    case 'removeFromCart':
+        if(!array_key_exists('ID', $_GET) || empty($_GET['ID'])) {
+            header('Location: index.php?P=cart');
+        }
+        else {
+            removeFromCart($_GET['ID']);
+            header('Location: index.php?P=cart');
+        }
+    break;
+
+    case 'listProducts':
+        require_once PRODUCT_DIR.'listProducts.php';
+    break;
+
+    case 'profile':
+        require_once USER_DIR.'profile.php';
+    break;
+
+    case 'addProduct': 
+        require_once PRODUCT_DIR.'addProduct.php';
+    break;
 }
 
 ?>

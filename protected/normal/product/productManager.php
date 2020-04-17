@@ -40,4 +40,27 @@
 			return true;
     }
 
+    function removeFromCart($id) {
+        $query = "DELETE FROM cart WHERE product_id = :id";
+        $params = [
+            ':id' => $id
+        ];
+
+        require_once DATABASE_CONTROLLER;
+
+        if(executeDML($query, $params)) {
+            return true;
+        }
+    }
+
+    function getProductsByCategory($category) {
+        $query = "SELECT * FROM products WHERE category = :category";
+        $params = [
+            ':category' => $category
+        ];
+
+        require_once DATABASE_CONTROLLER;
+        return getList($query, $params);
+    }
+
 ?>

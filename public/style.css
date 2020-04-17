@@ -5,8 +5,8 @@
 
 h2 {
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 3px;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 
@@ -27,10 +27,33 @@ h2 {
 #alert {
     text-align: center;
     background-color: lightcoral;
+    color: white;
 }
 
 .menuitem {
     display: inline-block;
     padding-left: 4px;
     padding-right: 8px;
+}
+
+.cardprice {
+    display: inline-block;
+    text-align: right;
+}
+
+footer {
+    margin-bottom: 20px;
+}
+
+.price {
+    font-size: x-large;
+}
+
+.profile {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+address {
+    margin-left: 20px;
 }

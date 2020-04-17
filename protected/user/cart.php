@@ -18,7 +18,7 @@
 
 <h2>Kosár</h2>
 <?php if(count($cart) <=0 ): ?>
-    <p class="alert">A kosár üres!</p>
+    <p id="alert">A kosár üres!</p>
 <?php else: ?>
     <table class = "table">
         <thead class="thead-light">
@@ -43,7 +43,7 @@
                     <td><a href="index.php?P=product&ID=<?=$item['id']; ?>"><?=$item['product_brand'].' '.$item['product_name']; ?></a></td>
                     <td><?=$item['quantity']; ?></td>
                     <td><?=number_format($item['pricesum']).' Ft'; ?></td>
-                    <td><a href='#'>Töröl</a></td>
+                    <td><a href='index.php?P=removeFromCart&ID=<?=$item['id'] ?>'>Töröl</a></td>
                 <?php endforeach; ?>
             </tr>
         </tbody>

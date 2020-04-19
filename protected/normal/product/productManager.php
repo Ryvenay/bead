@@ -63,4 +63,48 @@
         return getList($query, $params);
     }
 
+    function addProduct($productBrand, $productName, $category, $price, $inStock, $picture, $shortDesc, $description) {
+
+        $pictureTargetFile = IMG_DIR.basename($picture['name']);
+        $pictureFileType = strtolower(pathinfo($pictureTargetFile,PATHINFO_EXTENSION));
+
+        if (!getimagesize($picture["tmp_name"])) {
+            return "A fájl nem kép!";
+        }
+        else if (file_exists($pictureTargetFile)) {
+            return "A fálj már létezik!";
+        }
+        else if ($picture["size"] > 500000) {
+            return "A file túl nagy!";
+        }
+        else if ($pictureFileType != "jpg" && $pictureFileType != "png" && $pictureFileType != "jpeg") {
+            return "Nem megfelelő fájl formátum!";
+        }
+        else if (move_uploaded_file($picture["tmp_name"], $pictureTargetFile)) {
+            $query = "INSERT INTO products (product_brand, product_name, category, price, in_stock, picture, shortdesc, description) VALUES (:productBrand,:productName,:category,:price,:inStock,:picture,:shortDesc,:description)";
+            $params = [
+                ':productBrand' => $productBrand,
+                ':productName' => $productName,
+                ':category' => $category,
+                ':price' => $price,
+                ':inStock' => $inStock,
+                ':picture' => basename($picture['name']),
+                ':shortDesc' => $shortDesc,
+                ':description' => $description
+            ];
+
+            require_once DATABASE_CONTROLLER;
+        
+            if(executeDML($query, $params)) {
+                return "A termék hozzáadva!";
+                
+            }
+            return "Hiba a termék hozzáadása közben!";
+        }
+        else {
+            return "Hiba a fájlfeltöltés során!";
+        }
+
+    }
+
 ?>

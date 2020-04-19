@@ -2,6 +2,9 @@
 <div class ="row justify-content-md-center">
     <div class = "col align-self-start">
         <div class ="menuitem"><a href="index.php">Főoldal</a></div>
+        <?php if(isUserLoggedIn() || $_SESSION['permission'] >= 1) : ?>
+            <div class ="menuitem"><a href = "index.php?P=addProduct">Termék hozzáadása</a></div>
+        <?php endif; ?>
     </div>
 
     <div class = "align-self-center">

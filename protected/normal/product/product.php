@@ -20,7 +20,7 @@
             echo "<p id='alert'>Nincs elegendő a raktáron</p>";
         }
         else {
-            echo "<p id=addedToCart>Hozzáadva a kosárhoz</p>";
+            echo "<p id=info>Hozzáadva a kosárhoz</p>";
         }
     }
 
@@ -35,8 +35,7 @@
     <div class="product">
         <div class="row align-items-center">
             <div class="col">
-                <img src="<?=IMG_DIR.$product['picture']; ?>" class="img-fluid" alt="..."></a>
-                
+                <div class="mainimg"><img src="<?=IMG_DIR.$product['picture']; ?>" class="img-fluid" alt="..."></a></div>
             </div>
             <div class="col">
                 <div class="row justify-content-md-center">

@@ -52,7 +52,6 @@
 	</div>
 
     <div class="form-row">
-
         <div class="form-group col-md-2">
 			<label for="registerZip">Irányítószám</label>
 			<input type="number" class="form-control" id="registerZip" name="zip" min="0" value="<?=isset($postData) ? $postData['postal'] : "";?>" required>

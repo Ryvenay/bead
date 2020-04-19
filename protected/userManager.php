@@ -54,4 +54,5 @@ function UserRegister($email, $password, $first_name, $last_name, $address, $zip
 	return false;
 }
 
+
 ?>

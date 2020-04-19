@@ -19,7 +19,7 @@ h2 {
     text-align: center;
 }
 
-#addedToCart {
+#info {
     text-align: center;
     background-color:lightgreen;
 }
@@ -56,4 +56,35 @@ footer {
 
 address {
     margin-left: 20px;
+}
+
+#addButton {
+    margin-top: 10px;
+}
+
+.card-img-top {
+    width:auto;
+    height: auto;
+    max-height: 15rem;
+    max-width: 18rem;
+}
+
+.prwimg {
+    text-align: center;
+}
+
+.mainimg {
+    text-align: center;
+}
+
+.mainimg img {
+    height: 25rem;
+    width: auto
+}
+
+#carouselExampleCaptions h5 {
+    text-shadow: 4px 4px 4px black;
+}
+#carouselExampleCaptions p {
+    text-shadow: 4px 4px 4px black;
 }

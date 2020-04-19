@@ -12,7 +12,7 @@
         <?php foreach ($items as $item): ?>
             <div class = "col">
                 <div class="card border-white" style="width: 18rem;">
-                    <a href="index.php?P=product&ID=<?=$item['id'] ?>"><img src="<?=IMG_DIR.$item['picture']; ?>" class="card-img-top" alt="..."></a>
+                    <div class="prwimg"><a href="index.php?P=product&ID=<?=$item['id'] ?>"><img src="<?=IMG_DIR.$item['picture']; ?>" class="card-img-top" alt="..."></a></div>
                     <div class="card-body">
                         <h5 class="card-title"><?=$item['product_brand'].' '.$item['product_name'] ?></h5>
                         <h6 class="card-subtitle text-muted"><?=number_format($item['price']).' Ft'?></h6>

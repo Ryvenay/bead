@@ -3,7 +3,7 @@
         header('Location: Login.php');
     }
     else {
-        $query = "SELECT p.id as id, product_brand, product_name, quantity, quantity*price as pricesum FROM products p, users u, cart c WHERE c.product_id = p.id AND c.user_id = :user_id";
+        $query = "SELECT p.id as id, product_brand, product_name, quantity, quantity*price as pricesum FROM products p, cart c WHERE c.product_id = p.id AND c.user_id = :user_id";
         $params = [
             ':user_id' => $_SESSION['uid']
         ];

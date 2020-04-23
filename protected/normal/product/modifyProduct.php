@@ -1,5 +1,23 @@
 <?php
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add'])) {
+    if(array_key_exists('ID'. $_GET) && !empty($_GET['ID'])) {
+        $query = "SELECT * FROM products WHERE id = :id";
+        $params = [
+            ':id' => $_GET['ID']
+        ];
+
+        require_once DATABASE_CONTROLLER;
+        $product = getRecord($query, $params);
+
+    }
+
+
+
+?>
+
+
+
+<?php
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['modify'])) {
         $postData = [
             'productBrand' => $_POST['brand'],
             'productName' => $_POST['name'],
@@ -16,7 +34,7 @@
             echo '<p id="alert">Hiányzó adat!</p>';
         }
         else {
-                echo addProduct($postData['productBrand'], $postData['productName'], $postData['category'], $postData['price'], $postData['inStock'], $picture, $postData['shortDesc'], $postData['description']);
+                echo modifyProduct($postData['productBrand'], $postData['productName'], $postData['category'], $postData['price'], $postData['inStock'], $picture, $postData['shortDesc'], $postData['description']);
             
         }
     }
@@ -69,12 +87,12 @@
         <div class ="form-row justify-content-md-center">
             <div class = "form group col-md-8">
                 <label for="productDescription">Részletes leírás:</label>
-                <textarea class="form-control" id="productDescription" rows="3" name="description" required><?=isset($postData) ? $postData['description'] : ""; ?></textarea>
+                <textarea class="form-control" id="productDescription" rows="3" name="description" value="<?=isset($postData) ? $postData['description'] : "";?>" required></textarea>
             </div>
         </div>
         <div class ="form-row justify-content-md-center">
             <div class="col-md-auto">
-                <button type="submit" class="btn btn-primary" id="addButton" name="add">Hozzáadás</button>
+                <button type="submit" class="btn btn-primary" id="addButton" name="modify">Módosítás</button>
             </div>
         </div>
         

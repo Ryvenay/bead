@@ -6,22 +6,36 @@
     $product = getProduct($_GET['ID']);
 
 ?>
+<?php 
+    if(array_key_exists('d', $_GET) && !empty($_GET['d']) && $_SESSION['permission'] >= 1) {
+        if (!deleteProduct($_GET['d'])) {
+            echo '<p id = "alert>Hiba a törlés során</p>';
+        }
+    }
+    
+?>
 <?php
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['toCart'])) {
-        $postData = [
-            'quantity' => $_POST['quantity'],
-            'product_id' => $_POST['product_id']
-        ];
+        if(isUserLoggedIn()) {
+                $postData = [
+                'quantity' => $_POST['quantity'],
+                'product_id' => $_POST['product_id']
+            ];
 
-        if($postData['quantity'] < 1) {
-            echo "<p id='alert'>Mennyiség nem megfelelő</p>";
-        }
-        else if(!tocart($postData['product_id'], $postData['quantity'])) {
-            echo "<p id='alert'>Nincs elegendő a raktáron</p>";
+            if($postData['quantity'] < 1) {
+                echo "<p id='alert'>Mennyiség nem megfelelő</p>";
+            }
+            else if(!tocart($postData['product_id'], $postData['quantity'])) {
+                echo "<p id='alert'>Nincs elegendő a raktáron</p>";
+            }
+            else {
+                echo "<p id=info>Hozzáadva a kosárhoz</p>";
+            }
         }
         else {
-            echo "<p id=info>Hozzáadva a kosárhoz</p>";
+            echo '<p id = "alert">Kérjük jelntkezz be a kosár használatához!</p>';
         }
+        
     }
 
 ?>
@@ -57,8 +71,20 @@
                         <?='Raktáron: '.$product['in_stock'].' db'; ?>
                     </div>
                 </form>
+                <?php if (isUserLoggedIn() && $_SESSION['permission'] >= 1): ?>
+                    <hr>
+                    <div class="row justify-content-md-center">
+                        <div class = "col-md-auto">
+                            <button type="button" class="btn btn-primary">Módosítás</button>
+                        </div>
+                        <div class = "col-md-auto">
+                        <a class="btn btn-primary" href="index.php?P=product&d=<?=$product['id'] ?>" role="button">Törlés</a>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
+        <hr>
         <div class="row">
             <div class="col">
                 <h3 class="text-center">Leírás</h3>

@@ -6,25 +6,31 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src=<?=IMG_DIR.'home1.jpg'; ?> class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Fender gitárok széles választékban elérhetőek</h5>
-        <p>Böngéssz a Fender gitárok széles kínálatában.</p>
-      </div>
+      <a href = "index.php?P=listProducts&category=Git%C3%A1r">
+        <img src=<?=IMG_DIR.'home1.jpg'; ?> class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Fender gitárok széles választékban elérhetőek</h5>
+          <p>Böngéssz a Fender gitárok széles kínálatában.</p>
+        </div>
+      </a>
     </div>
     <div class="carousel-item">
-      <img src=<?=IMG_DIR.'home2.jpg'; ?> class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>EarthQuaker Devices Arrows</h5>
-        <p>Nálunk is elérhető az EarthQuaker Devices Arrows preamp booster pedál.</p>
-      </div>
+      <a href = "index.php?P=product&ID=10">
+        <img src=<?=IMG_DIR.'home2.jpg'; ?> class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>EarthQuaker Devices Arrows</h5>
+          <p>Nálunk is elérhető az EarthQuaker Devices Arrows preamp booster pedál.</p>
+        </div>
+      </a>
     </div>
     <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-      </div>
+      <a href = "index.php?P=product&ID=9">
+        <img src=<?=IMG_DIR.'home3.jpg'; ?> class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>ÚJDONSÁG!</h5>
+          <p>TC Electronic Plethora x5 elérhető nálunk!</p>
+        </div>
+      </a>
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
@@ -36,3 +42,4 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+

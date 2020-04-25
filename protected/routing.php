@@ -66,7 +66,7 @@ switch ($_GET['P']) {
     break;
 
     case 'modifyProduct':
-        require_once PRODUCT_DIR.'modifyProduct.html';
+        require_once PRODUCT_DIR.'modifyProduct.php';
     break;
 
 }

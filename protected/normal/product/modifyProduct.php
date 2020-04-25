@@ -1,24 +1,36 @@
 <?php
-    if(array_key_exists('ID'. $_GET) && !empty($_GET['ID'])) {
+    if(array_key_exists('ID', $_GET) && !empty($_GET['ID'])) {
+        $ID = $_GET['ID'];
         $query = "SELECT * FROM products WHERE id = :id";
         $params = [
-            ':id' => $_GET['ID']
+            ':id' => $ID
         ];
 
         require_once DATABASE_CONTROLLER;
         $product = getRecord($query, $params);
-
+        if (empty($product)) {
+            header('Location: index.php');
+        }
+        else {
+            $postData = [
+                'id' => $ID,
+                'productBrand' => $product['product_brand'],
+                'productName' => $product['product_name'],
+                'price' => $product['price'],
+                'category' => $product['category'],
+                'inStock' => $product['in_stock'],
+                'shortDesc' => $product['shortdesc'],
+                'description' => $product['description']
+            ];
+        }
     }
-
-
-
 ?>
-
 
 
 <?php
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['modify'])) {
         $postData = [
+            'id' => $ID,
             'productBrand' => $_POST['brand'],
             'productName' => $_POST['name'],
             'price' => $_POST['price'],
@@ -34,7 +46,7 @@
             echo '<p id="alert">Hiányzó adat!</p>';
         }
         else {
-                echo modifyProduct($postData['productBrand'], $postData['productName'], $postData['category'], $postData['price'], $postData['inStock'], $picture, $postData['shortDesc'], $postData['description']);
+                echo modifyProduct($postData['id'], $postData['productBrand'], $postData['productName'], $postData['category'], $postData['price'], $postData['inStock'], $picture, $postData['shortDesc'], $postData['description']);
             
         }
     }
@@ -87,7 +99,7 @@
         <div class ="form-row justify-content-md-center">
             <div class = "form group col-md-8">
                 <label for="productDescription">Részletes leírás:</label>
-                <textarea class="form-control" id="productDescription" rows="3" name="description" value="<?=isset($postData) ? $postData['description'] : "";?>" required></textarea>
+                <textarea class="form-control" id="productDescription" rows="3" name="description" required><?=isset($postData) ? $postData['description'] : "";?></textarea>
             </div>
         </div>
         <div class ="form-row justify-content-md-center">

@@ -75,10 +75,10 @@
                     <hr>
                     <div class="row justify-content-md-center">
                         <div class = "col-md-auto">
-                            <button type="button" class="btn btn-primary">Módosítás</button>
+                        <a class="btn btn-primary" href="index.php?P=modifyProduct&ID=<?=$product['id'] ?>" role="button">Módosítás</a>
                         </div>
                         <div class = "col-md-auto">
-                        <a class="btn btn-primary" href="index.php?P=product&d=<?=$product['id'] ?>" role="button">Törlés</a>
+                            <a class="btn btn-primary" href="index.php?P=product&d=<?=$product['id'] ?>" role="button">Törlés</a>
                         </div>
                     </div>
                 <?php endif; ?>

@@ -26,7 +26,6 @@
     }
 ?>
 
-
 <?php
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['modify'])) {
         $postData = [
@@ -55,7 +54,7 @@
 <?php if(!isUserLoggedIn() || $_SESSION['permission'] < 1) : ?>
     <p id="alert">you have no power here</p>
 <?php else: ?>
-    <h2>Termék hozzáadás</h2>
+    <h2>Termék módosítás</h2>
     <form method = "POST" enctype="multipart/form-data">
         <div class ="form-row justify-content-md-center">
             <div class = "form-group col-md-8">

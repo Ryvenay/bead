@@ -101,3 +101,7 @@ address {
 #carouselExampleCaptions p {
     text-shadow: 4px 4px 4px black;
 }
+
+#filter {
+    margin-bottom: 10px;
+}

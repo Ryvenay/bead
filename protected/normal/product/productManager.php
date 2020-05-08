@@ -168,23 +168,60 @@
         } 
         else {
             $query = "UPDATE products (product_brand, product_name, category, price, in_stock, shortdesc, description) VALUES (:productBrand,:productName,:category,:price,:inStock,:shortDesc,:description) WHERE id = :id";
-                $params = [
-                    ':id' => $id,
-                    ':productBrand' => $productBrand,
-                    ':productName' => $productName,
-                    ':category' => $category,
-                    ':price' => $price,
-                    ':inStock' => $inStock,
-                    ':shortDesc' => $shortDesc,
-                    ':description' => $description
-                ];
-                require_once DATABASE_CONTROLLER;
-            
-                if(executeDML($query, $params)) {
-                    return '<p id="info">A termék módosítva!</p>';
-                }
+            $params = [
+                ':id' => $id,
+                ':productBrand' => $productBrand,
+                ':productName' => $productName,
+                ':category' => $category,
+                ':price' => $price,
+                ':inStock' => $inStock,
+                ':shortDesc' => $shortDesc,
+                ':description' => $description
+            ];
+            require_once DATABASE_CONTROLLER;
+        
+            if(executeDML($query, $params)) {
+                return '<p id="info">A termék módosítva!</p>';
+            }
         }
         
+    }
+
+    function searchProducts($filter) {
+       if(empty($filter)) {
+            $query = "SELECT * FROM products";
+            $params = [];
+        }
+        else {
+            $query = "SELECT * FROM products WHERE ";
+            //$params = [];
+            $iter = new CachingIterator(new ArrayIterator($filter));
+            foreach ($iter as $key => $value) {
+                if($key == "min") {
+                    $query .= "price >= :".$key." ";
+                    $params[":".$key] = $value;
+                }
+                else if($key == "max") {
+                    $query .= "price <= :".$key." ";
+                    $params[":".$key] = $value;
+                }
+                else {
+                    $query .=$key." = :".$key." ";
+                    $params[":".$key] = $value;
+                }
+                if ($iter->hasNext()) {
+                    $query .= "AND ";
+                }
+            } 
+            //return $query;
+            /* if(array_key_exists('brand', $filter)) {
+                $query .= "product_brand = :brand";
+
+            } */
+
+        }
+        require_once DATABASE_CONTROLLER;
+        return getList($query, $params);
     }
 
 

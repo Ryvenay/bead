@@ -3,7 +3,42 @@
     $items = getProductsByCategory($category);
 ?>
 
+
 <h2><?=$category ?></h2>
+
+
+<div class = "row" id="filter">
+    <div class = "col-md-12">
+        <form method = "GET">
+            <div class = "form-row">
+                <div class="form-group col-md-2">
+                    <input type="text" name="brand" class="form-control form-control-sm" id="brand" placeholder = "Márka">
+                </div>
+                <div class="form-group col-md-2">
+                    <input type="text" name="product" class="form-control form-control-sm" id="product" placeholder = "Termék">
+                </div>
+                <div class="form-group col-md-2">
+                    <select class="form-control form-control-sm" name="category">
+                        <option value = "">Összes</option>
+                        <option>Gitár</option>
+                        <option>Effekt</option>
+                        <option>Erősítő</option>
+                        <option>Kiegészítő</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <input type="number" name="minPrice" class="form-control form-control-sm" id="minPrice" placeholder = "Min. ár">
+                </div>
+                <div class="form-group col-md-2">
+                    <input type="number" name="maxPrice" class="form-control form-control-sm" id="maxPrice" placeholder = "Max. ár">
+                </div>
+                <div class="form-group col-md-2">
+                    <button type="submit" value ="search" class="btn btn-primary btn-sm" id="searchButton" name="P">Keresés</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 <?php if(count($items) == 0) : ?>
     <p id="alert">Nincs elem ebben a kategóriában!</p>

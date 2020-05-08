@@ -58,15 +58,35 @@ switch ($_GET['P']) {
     break;
 
     case 'profile':
-        require_once USER_DIR.'profile.php';
+        if (isUserLoggedIn()) {
+            require_once USER_DIR.'profile.php';
+        }
+        else {
+            header('Location: index.php');
+        }
     break;
 
     case 'addProduct': 
-        require_once PRODUCT_DIR.'addProduct.php';
+        if (isUserLoggedIn()) {
+            require_once PRODUCT_DIR.'addProduct.php';
+        }
+        else {
+            header('Location: index.php');
+        }
+        
     break;
 
     case 'modifyProduct':
-        require_once PRODUCT_DIR.'modifyProduct.php';
+        if (isUserLoggedIn()) {
+            require_once PRODUCT_DIR.'modifyProduct.php';
+        }
+        else {
+            header('Location: index.php');
+        }
+    break;
+
+    case 'search':
+        require_once PRODUCT_DIR.'search.php';
     break;
 
 }

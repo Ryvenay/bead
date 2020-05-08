@@ -11,8 +11,8 @@
         ];
 
         $picture = $_FILES['picture'];
-
-        if (empty($postData['productBrand']) || empty($picture) || empty($postData['productName']) || empty($postData['price']) || empty($postData['category']) || empty($postData['inStock']) || empty($postData['shortDesc']) || empty($postData['description'])) {
+        
+        if (empty($postData['productBrand']) || $picture['error'] > 0 || empty($postData['productName']) || empty($postData['price']) || empty($postData['category']) || empty($postData['inStock']) || empty($postData['shortDesc']) || empty($postData['description'])) {
             echo '<p id="alert">Hiányzó adat!</p>';
         }
         else {
